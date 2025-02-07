@@ -48,6 +48,7 @@ pipeline {
                 echo "Password: ${params.PASSWORD}"
                 echo "triggered test"
                 echo "trigger again"
+                error 'some failure'
 
             }
         }

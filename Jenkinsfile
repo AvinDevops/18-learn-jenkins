@@ -6,6 +6,10 @@ pipeline {
         timeout(time:30, unit:'MINUTES')
         disableConcurrentBuilds()
     }
+    environment {
+        DEPLOY_TO = 'Production'
+        GREETINGS = 'Good Morning'
+    }
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
@@ -21,6 +25,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo This is Build'
+                sh 'env'
             }
         }
         stage('Test') {

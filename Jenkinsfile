@@ -31,7 +31,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'echo This is Test'
-                sh 'sleep 10'
+                //sh 'sleep 10'
             }
         }
         stage('Deploy') {
@@ -47,8 +47,20 @@ pipeline {
                 echo "Choice: ${params.CHOICE}"
                 echo "Password: ${params.PASSWORD}"
                 echo "triggered test"
+                echo "trigger again"
 
             }
+        }
+    }
+    post {
+        always {
+            echo 'I will always run.'
+        }
+        success {
+            echo 'I will run only when pipeline is success'
+        }
+        failure {
+            echo 'I will run only when pipeline is failure'
         }
     }
 }
